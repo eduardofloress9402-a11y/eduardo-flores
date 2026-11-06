@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eduardo Flores · CV</title>
+<meta name="description" content="CV de Eduardo Flores, desarrollador de software y web en Córdoba, Argentina.">
+<meta name="theme-color" content="#08080A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap">
+<style>
+:root{--tinta:#141417;--gris:#5d5d66;--suave:#8a8a93;--linea:#e4e2dc;--rojo:#D91F26;--hoja:#ffffff;--fondo:#08080A}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--fondo);font:9.2pt/1.34 "Inter",system-ui,sans-serif;color:var(--tinta);-webkit-font-smoothing:antialiased}
+.barra{max-width:210mm;margin:0 auto;padding:18px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;font:500 14px "Inter",sans-serif}
+.barra a{color:#C9C7C1;text-decoration:none}
+.barra .bajar{background:#E5262A;color:#fff;padding:9px 14px;border-radius:9px;font-weight:600}
+.hoja{width:210mm;min-height:297mm;margin:0 auto 40px;background:var(--hoja);padding:10mm 12mm 0}
+@media screen and (max-width:820px){.hoja{width:auto;min-height:0;margin:0 12px 30px;padding:24px 20px}}
+header{display:grid;grid-template-columns:1fr auto;gap:10px 24px;align-items:end;padding-bottom:10px;border-bottom:2px solid var(--tinta)}
+h1{margin:0;font:800 26pt/0.95 "Inter Display","Inter",sans-serif;letter-spacing:-.02em;text-transform:uppercase}
+h1 i{font-style:normal;color:var(--rojo)}
+.rol{margin:6px 0 0;font-weight:600;font-size:11.5pt}
+.contacto{text-align:right;font-size:8.6pt;color:var(--gris);line-height:1.5}
+.contacto a{color:var(--tinta);text-decoration:none}
+@media screen and (max-width:820px){header{grid-template-columns:1fr}.contacto{text-align:left}}
+h2{margin:9px 0 5px;font:700 8.5pt "Inter",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--rojo);display:flex;align-items:center;gap:10px}
+h2::after{content:"";flex:1;height:1px;background:var(--linea)}
+.perfil{margin:8px 0 0;font-size:9.6pt;color:#2a2a30}
+.proy{margin:0 0 7px;break-inside:avoid}
+.proy .cab{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.proy h3{margin:0;font:700 10.6pt "Inter",sans-serif}
+.proy h3 span{font-weight:500;color:var(--gris)}
+.proy .meta{font-size:8.6pt;color:var(--suave);white-space:nowrap}
+.proy .stack{font-size:8.6pt;color:var(--rojo);font-weight:500;margin:1px 0 3px}
+.proy ul{margin:0;padding-left:15px}
+.proy li{margin:1px 0;color:#2a2a30}
+.hab{display:grid;grid-template-columns:112px 1fr;gap:2px 14px;font-size:9pt}
+.hab dt{font-weight:600}
+.hab dd{margin:0;color:#2a2a30}
+@media screen and (max-width:620px){.hab{grid-template-columns:1fr}.hab dd{margin-bottom:6px}}
+.dos{display:grid;grid-template-columns:1.7fr 1fr;gap:0 26px}
+@media screen and (max-width:620px){.dos{grid-template-columns:1fr}}
+.lista{margin:0;padding:0;list-style:none}
+.lista li{margin:0 0 4px}
+.lista b{font-weight:600}
+.lista span{color:var(--gris)}
+.pie{margin-top:12px;font-size:8.4pt;color:var(--suave)}
+@page{size:A4;margin:0}
+@media print{body{background:#fff}.barra{display:none}.hoja{margin:0;width:210mm;min-height:0}}
+</style>
+</head>
+<body>
+<div class="barra"><a href="./">← Volver al portfolio</a><a class="bajar" href="Eduardo-Flores-CV.pdf" download>Descargar PDF</a></div>
+<main class="hoja">
+  <header>
+    <div>
+      <h1>Eduardo <i>Flores</i></h1>
+      <p class="rol">Desarrollador de software y web · Python · JavaScript · IA aplicada</p>
+    </div>
+    <div class="contacto">
+      Córdoba, Argentina<br>
+      <a href="mailto:eduardofloress.9406@gmail.com">eduardofloress.9406@gmail.com</a><br>
+      <a href="https://eduardofloress9402-a11y.github.io/eduardo-flores/">eduardofloress9402-a11y.github.io/eduardo-flores</a><br>
+      <a href="https://github.com/eduardofloress9402-a11y">github.com/eduardofloress9402-a11y</a>
+    </div>
+  </header>
+
+  <p class="perfil">Construyo sistemas completos de punta a punta: backend en Python, webs, integraciones con APIs y automatizaciones con IA. Mis proyectos están publicados y se usan todos los días. Trabajo con herramientas de IA como apoyo para programar, y pongo el foco en que lo que hago funcione, se pueda probar y no se rompa en producción.</p>
+
+  <h2>Proyectos</h2>
+
+  <div class="proy">
+    <div class="cab"><h3>Command Center <span>· oficina de agentes de IA</span></h3><span class="meta">en uso diario</span></div>
+    <div class="stack">Python · FastAPI · PostgreSQL · Railway · Telegram Bot API · Instagram Graph API · Gemini</div>
+    <ul>
+      <li>Seis agentes que preparan contenido para Instagram, siguen consultas de clientes, gestionan pedidos y revisan antes de publicar. Todo se maneja desde un bot de Telegram.</li>
+      <li>Integraciones con Instagram (dos apps de Meta, con renovación automática de tokens), Gemini y webhooks de formularios web y de una tienda online.</li>
+      <li>Confiabilidad: reintentos con espera creciente para errores pasajeros, un vigía que relanza el proceso si se traba y un registro de errores con resumen diario y reporte automático como issue en GitHub.</li>
+      <li>Más de 40 simulaciones automatizadas que corren en GitHub Actions en cada cambio, y publicación continua en Railway.</li>
+      <li>Generación de imágenes y mini reels para Instagram con Pillow.</li>
+    </ul>
+  </div>
+
+  <div class="proy">
+    <div class="cab"><h3>FinAudit <span>· auditoría de movimientos financieros</span></h3><span class="meta">terminado y funcionando</span></div>
+    <div class="stack">Python · Pandas · PostgreSQL · SQLAlchemy · informes PDF</div>
+    <ul>
+      <li>Analiza movimientos desde archivos CSV y Excel con cinco reglas: pagos duplicados, facturas sin cobrar, suscripciones que se siguen pagando, posibles errores de precio y movimientos fuera de lo normal (por desvío estadístico).</li>
+      <li>Genera un informe en PDF con cada hallazgo, su monto y un nivel de confianza. Tiene una demo pública que procesa el archivo en el navegador, con las mismas reglas.</li>
+    </ul>
+  </div>
+
+  <div class="proy">
+    <div class="cab"><h3>Trama <span>· estudio propio de webs e Instagram</span></h3><span class="meta">activo</span></div>
+    <div class="stack">HTML · CSS · JavaScript · diseño responsive · Netlify</div>
+    <ul>
+      <li>Diseño y desarrollo webs para negocios. Armé siete webs de muestra por rubro: buscador de propiedades con filtros, reserva de turnos, carta y pedidos, tienda con carrito y un sitio bilingüe.</li>
+      <li>Me encargo de todo el proceso: búsqueda de clientes, propuesta, desarrollo y publicación.</li>
+    </ul>
+  </div>
+
+  <div class="proy">
+    <div class="cab"><h3>eDEX seguro <span>· app de escritorio</span></h3><span class="meta">proyecto personal</span></div>
+    <div class="stack">Electron · Node.js · seguridad de aplicaciones</div>
+    <ul>
+      <li>Reescritura segura de una terminal de escritorio de código abierto: aislamiento de contexto, sandbox, comunicación validada entre procesos y sin puertos abiertos (la vulnerabilidad del original, CVE-2023-30856).</li>
+    </ul>
+  </div>
+
+  <div class="proy">
+    <div class="cab"><h3>Otros proyectos</h3></div>
+    <ul>
+      <li><b>Zafirah</b>: mi primer proyecto web, la tienda online de una marca de jabones artesanales (zafirahjabones.com.ar).</li>
+      <li><b>Creador de cabañas 2D y 3D</b>: diseño de cabañas de steel frame con vistas en dos y tres dimensiones.</li>
+      <li><b>Portfolio</b>: animaciones con JavaScript (canvas, IntersectionObserver) y tres demos interactivas, sin frameworks.</li>
+    </ul>
+  </div>
+
+  <h2>Habilidades</h2>
+  <dl class="hab">
+    <dt>Lenguajes</dt><dd>Python, JavaScript, HTML, CSS, SQL</dd>
+    <dt>Backend</dt><dd>FastAPI, APIs REST, webhooks, PostgreSQL, SQLAlchemy, procesos en segundo plano</dd>
+    <dt>Frontend</dt><dd>HTML, CSS y JavaScript sin frameworks, diseño responsive, animaciones con canvas</dd>
+    <dt>Datos</dt><dd>Pandas, archivos CSV y Excel, análisis estadístico básico, informes PDF</dd>
+    <dt>Integraciones</dt><dd>Telegram Bot API, Instagram Graph API (Meta), Gemini API</dd>
+    <dt>IA aplicada</dt><dd>Agentes con modelos de lenguaje, prompts con reglas y filtros de salida, IA como asistente de programación</dd>
+    <dt>Infra y DevOps</dt><dd>Git, GitHub, GitHub Actions, Railway, Netlify, GitHub Pages, publicación continua</dd>
+    <dt>Calidad</dt><dd>Pruebas automatizadas, manejo de credenciales con variables de entorno, rotación de claves</dd>
+    <dt>Escritorio</dt><dd>Electron, Node.js</dd>
+  </dl>
+
+  <div class="dos">
+    <div>
+      <h2>Formación</h2>
+      <ul class="lista">
+        <li><b>Desarrollo de Software</b> <span>· carrera iniciada en 2020; programo desde los 17 años</span></li>
+        <li><b>Desarrollo de IA y Bases de Datos</b> <span>· estudios actuales</span></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Idiomas</h2>
+      <ul class="lista">
+        <li><b>Español</b> <span>· nativo</span></li>
+        <li><b>Inglés</b> <span>· B2</span></li>
+      </ul>
+    </div>
+  </div>
+</main>
+</body>
+</html>
