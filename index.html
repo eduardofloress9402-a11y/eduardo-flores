@@ -46,8 +46,18 @@ a{color:inherit}
 .heroe>.wrap{width:100%;min-width:0}
 .heroe::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 70% 30%,rgba(229,38,42,.16),transparent 70%);pointer-events:none}
 .gigante{font:400 clamp(92px,21vw,320px)/.82 var(--f-g);letter-spacing:-.01em;text-transform:uppercase;color:var(--rojo);margin:0;white-space:nowrap;position:relative}
-.gigante span{display:inline-block;transform:translateY(105%);opacity:0}
-.listo .gigante span{animation:sube 1s var(--ease) forwards}
+.gigante span{display:inline-block;min-height:.82em}
+/* cursores que arman la página */
+#capa{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+.cur{position:absolute;left:0;top:0;transition:transform .7s cubic-bezier(.65,0,.25,1),opacity .4s;will-change:transform}
+.cur.quieto{opacity:.6}
+.cur svg{width:22px;height:22px;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+.cur span{position:absolute;left:17px;top:19px;font:500 11px var(--f-m);padding:3px 8px;border-radius:2px 9px 9px 9px;color:#fff;white-space:nowrap;letter-spacing:.04em}
+.sel{position:absolute;border:1.5px solid var(--c);border-radius:2px;transition:opacity .4s,width .09s linear}
+.sel i{position:absolute;width:7px;height:7px;background:#fff;border:1.5px solid var(--c)}
+.sel i:nth-child(1){left:-4px;top:-4px}.sel i:nth-child(2){right:-4px;top:-4px}.sel i:nth-child(3){left:-4px;bottom:-4px}.sel i:nth-child(4){right:-4px;bottom:-4px}
+.sel b{position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);background:var(--c);color:#fff;font:500 10px var(--f-m);padding:2px 6px;border-radius:3px;white-space:nowrap}
+@media (max-width:720px){.cur span{font-size:9px;padding:2px 6px}.cur svg{width:18px;height:18px}}
 @keyframes sube{to{transform:none;opacity:1}}
 .fila{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:end;margin-top:34px;position:relative}
 .hola{font:400 clamp(28px,3.6vw,48px)/1 var(--f-g);text-transform:uppercase}
@@ -75,8 +85,9 @@ a{color:inherit}
 section.bloque{padding:120px 0}
 .titulo{font:400 clamp(52px,8vw,120px)/.9 var(--f-g);text-transform:uppercase;margin:14px 0 0}
 .titulo i{font-style:normal;color:var(--rojo)}
-.revela{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
-.revela.visto{opacity:1;transform:none}
+.revela{opacity:0}
+.revela.visto{opacity:1;animation:arma .55s var(--ease) backwards}
+@keyframes arma{from{opacity:0;transform:scale(.97);filter:blur(5px)}}
 
 .filo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;margin-top:48px}
 .filo p{color:#C9C7C1;margin:0 0 16px;font-size:19px}
@@ -138,7 +149,7 @@ section.bloque{padding:120px 0}
 <body>
 <div id="boot" aria-hidden="true"><canvas id="particulas"></canvas><div class="pct">CARGANDO <b id="pct">0</b>%</div><button class="saltar" id="saltar">SALTAR</button></div>
 
-<header class="nav">
+<header class="nav revela h" data-q="3">
   <a class="logo" href="#">ef<i>.</i></a>
   <nav aria-label="Secciones"><a href="#enfoque">Enfoque</a><a href="#proyectos">Proyectos</a><a href="#herramientas">Herramientas</a></nav>
   <a class="btn" href="#contacto">Hablemos ↗</a>
@@ -147,20 +158,20 @@ section.bloque{padding:120px 0}
 <main>
 <section class="heroe">
   <div class="wrap">
-    <p class="mono"><b>■</b> Software developer · Web builder · Córdoba, AR</p>
-    <h1 class="gigante" aria-label="Portfolio"><span>Portfolio</span></h1>
+    <p class="mono revela h" data-q="0"><b>■</b> Software developer · Web builder · Córdoba, AR</p>
+    <h1 class="gigante" id="titulo" data-txt="Portfolio" aria-label="Portfolio"><span>Portfolio</span></h1>
     <div class="fila">
       <div>
-        <div class="hola"><small>Hola, soy</small>Eduardo <em>Flores</em></div>
-        <p class="bajada">Construyo webs, herramientas digitales y automatizaciones con IA. Ideas que se convierten en software que se usa todos los días.</p>
-        <div class="acciones"><a class="btn btn-r" href="#proyectos">Ver proyectos ↓</a><a class="btn btn-l" href="#contacto">Hablemos</a></div>
+        <div class="hola revela h" data-q="2"><small>Hola, soy</small>Eduardo <em>Flores</em></div>
+        <p class="bajada revela h" data-q="2">Construyo webs, herramientas digitales y automatizaciones con IA. Ideas que se convierten en software que se usa todos los días.</p>
+        <div class="acciones revela h" data-q="3"><a class="btn btn-r" href="#proyectos">Ver proyectos ↓</a><a class="btn btn-l" href="#contacto">Hablemos</a></div>
       </div>
-      <figure class="foto" style="margin:0"><img id="foto" src="foto.jpg" alt="Eduardo Flores" onerror="this.remove()"><span class="tag"><b>●</b> DISPONIBLE PARA PROYECTOS</span></figure>
+      <figure class="foto revela h" data-q="1" style="margin:0"><img id="foto" src="foto.jpg" alt="Eduardo Flores" onerror="this.remove()"><span class="tag"><b>●</b> DISPONIBLE PARA PROYECTOS</span></figure>
     </div>
   </div>
 </section>
 
-<div class="cinta" aria-hidden="true"><div><span>Webs</span><span>Automatización</span><span>IA aplicada</span><span>Sistemas a medida</span><span>Python</span><span>FastAPI</span><span>Webs</span><span>Automatización</span><span>IA aplicada</span><span>Sistemas a medida</span><span>Python</span><span>FastAPI</span></div></div>
+<div class="cinta revela h" data-q="1" aria-hidden="true"><div><span>Webs</span><span>Automatización</span><span>IA aplicada</span><span>Sistemas a medida</span><span>Python</span><span>FastAPI</span><span>Webs</span><span>Automatización</span><span>IA aplicada</span><span>Sistemas a medida</span><span>Python</span><span>FastAPI</span></div></div>
 
 <section class="bloque" id="enfoque">
   <div class="wrap">
@@ -240,9 +251,9 @@ section.bloque{padding:120px 0}
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.getElementById('anio').textContent = new Date().getFullYear();
   var boot = document.getElementById('boot');
-  function listo(){ if(!boot || boot.classList.contains('fuera')) return; boot.classList.add('fuera'); document.body.classList.add('listo'); setTimeout(function(){ boot.remove(); }, 800); }
+  function listo(){ if(!boot || boot.classList.contains('fuera')) return; boot.classList.add('fuera'); document.body.classList.add('listo'); iniciar(); setTimeout(function(){ boot.remove(); }, 800); }
   document.getElementById('saltar').onclick = listo;
-  if (reduce) { listo(); } else {
+  if (reduce) { document.querySelectorAll('.revela').forEach(function(el){ el.classList.add('visto'); }); listo(); } else {
     // Partículas que se juntan y forman "ef." (como el arranque del reel)
     var cv = document.getElementById('particulas'), ctx = cv.getContext('2d'), dpr = Math.min(2, devicePixelRatio || 1);
     var W, H, pts = [], destino = [];
@@ -271,11 +282,61 @@ section.bloque{padding:120px 0}
     })(t0);
   }
   // Los títulos gigantes siempre entran en el ancho (aunque cambie la fuente)
-  function encajar(){ document.querySelectorAll('.gigante').forEach(function(el){ el.style.fontSize = ''; var w = el.clientWidth, s = el.scrollWidth; if (s > w) el.style.fontSize = (parseFloat(getComputedStyle(el).fontSize) * w / s * 0.97) + 'px'; }); }
+  function encajar(){ document.querySelectorAll('.gigante').forEach(function(el){ el.style.fontSize = ''; var sp = el.firstElementChild, tmp = null; if (el.dataset.txt && sp.textContent !== el.dataset.txt) { tmp = sp.textContent; sp.textContent = el.dataset.txt; } var w = el.clientWidth, s = el.scrollWidth; if (tmp !== null) sp.textContent = tmp; if (s > w) el.style.fontSize = (parseFloat(getComputedStyle(el).fontSize) * w / s * 0.97) + 'px'; }); }
   encajar(); addEventListener('resize', encajar); if (document.fonts) document.fonts.ready.then(encajar);
   // Las secciones aparecen al scrollear
-  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('visto'); io.unobserve(e.target); } }); }, { threshold: 0.15 }) : null;
-  document.querySelectorAll('.revela').forEach(function(el){ io ? io.observe(el) : el.classList.add('visto'); });
+  // Cursores: cuatro "compañeros" que arman la página en vivo, como en un editor compartido
+  var titulo = document.getElementById('titulo');
+  if (!reduce) titulo.firstElementChild.textContent = '';
+  var curs = [], capa;
+  function espera(ms){ return new Promise(function(r){ setTimeout(r, ms); }); }
+  function mover(o, x, y, ms){ o.el.style.transitionDuration = ms + 'ms'; o.el.style.transform = 'translate(' + x + 'px,' + y + 'px)'; o.x = x; o.y = y; }
+  function marco(el, c){
+    var r = el.getBoundingClientRect(), s = document.createElement('div');
+    s.className = 'sel'; s.style.cssText = 'left:' + r.left + 'px;top:' + r.top + 'px;width:' + r.width + 'px;height:' + r.height + 'px;--c:' + c;
+    s.innerHTML = '<i></i><i></i><i></i><i></i><b>' + Math.round(r.width) + ' × ' + Math.round(r.height) + '</b>';
+    capa.appendChild(s); return s;
+  }
+  async function armar(o, el, rapido){
+    var r = el.getBoundingClientRect(), tipear = el === titulo;
+    var tx = tipear ? r.left : r.left + Math.min(r.width * 0.6, 30 + Math.random() * r.width * 0.5);
+    var ty = tipear ? r.top + r.height * 0.35 : r.top + Math.min(r.height * 0.6, 20 + Math.random() * 40);
+    tx = Math.max(8, Math.min(innerWidth - 40, tx)); ty = Math.max(8, Math.min(innerHeight - 40, ty));
+    var d = rapido ? 280 : Math.min(950, 380 + Math.hypot(tx - o.x, ty - o.y) * 0.55);
+    o.el.classList.remove('quieto'); mover(o, tx, ty, d); await espera(d + 60);
+    var s = marco(el, o.c);
+    if (tipear) {
+      var sp = el.firstElementChild, t = el.dataset.txt; s.style.width = '8px'; el.classList.add('visto');
+      for (var i = 1; i <= t.length; i++) { sp.textContent = t.slice(0, i); var rr = sp.getBoundingClientRect(); mover(o, rr.right + 4, ty, 110); s.style.width = (rr.right - r.left + 6) + 'px'; await espera(120); }
+      s.lastChild.textContent = Math.round(el.getBoundingClientRect().width) + ' × ' + Math.round(r.height);
+    } else { el.classList.add('visto'); mover(o, tx + 14, ty + 10, 260); }
+    await espera(rapido ? 220 : 480); s.style.opacity = 0; setTimeout(function(){ s.remove(); }, 450);
+  }
+  function encolar(o, el){ o.q.push(el); if (!o.ocupado) correr(o); }
+  async function correr(o){ o.ocupado = true; while (o.q.length) { await armar(o, o.q.shift(), o.q.length > 1); } o.ocupado = false; o.el.classList.add('quieto'); }
+  function iniciar(){
+    if (reduce || capa) return;
+    capa = document.createElement('div'); capa.id = 'capa'; capa.setAttribute('aria-hidden', 'true'); document.body.appendChild(capa);
+    [['Eduardo', '#E5262A'], ['Octavio', '#3B82F6'], ['Lucía', '#E3A21A'], ['Cristian', '#16A34A']].forEach(function(c, i){
+      var d = document.createElement('div'); d.className = 'cur';
+      d.innerHTML = '<svg viewBox="0 0 24 24"><path d="M4 2.5v16.8l4.6-4.3 3.3 6.9 2.7-1.3-3.2-6.8h6.4z" fill="' + c[1] + '" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg><span style="background:' + c[1] + '">' + c[0] + '</span>';
+      capa.appendChild(d);
+      var o = { el: d, c: c[1], q: [], ocupado: false };
+      mover(o, i % 2 ? innerWidth + 40 : -40, innerHeight * (i < 2 ? 0.25 : 0.8), 0); curs.push(o);
+    });
+    encolar(curs[0], titulo);
+    document.querySelectorAll('.revela.h').forEach(function(el){ encolar(curs[+el.dataset.q], el); });
+    var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (!e.isIntersecting) return; io.unobserve(e.target);
+        var o = curs.slice().sort(function(a, b){ return (a.q.length + a.ocupado) - (b.q.length + b.ocupado); })[0];
+        encolar(o, e.target);
+      });
+    }, { threshold: 0.2 }) : null;
+    document.querySelectorAll('.revela:not(.h)').forEach(function(el){ io ? io.observe(el) : el.classList.add('visto'); });
+    // cuando no tienen nada que hacer, se pasean despacio
+    setInterval(function(){ curs.forEach(function(o){ if (!o.ocupado && Math.random() < 0.6) mover(o, 40 + Math.random() * (innerWidth - 120), 80 + Math.random() * (innerHeight - 160), 2200); }); }, 2600);
+  }
 })();
 </script>
 </body>
