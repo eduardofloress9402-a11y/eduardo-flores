@@ -219,8 +219,8 @@ footer{margin-top:70px;padding:26px 0;border-top:1px solid var(--linea)}
     },
     post: postLucia,
     plan: async function(){
-      estado('octavio', 'trabaja', 'mirando el plan…'); log('octavio', 'cuenta respuestas por versión del mensaje');
-      await bot('Plan de WhatsApp de hoy: 10 contactos (5 a la mañana y 5 a la tarde).\nVersión A: 4 respuestas de 22\nVersión B: 2 de 21\nVersión C: 1 de 20\nLa A viene ganando. Te dejo los 5 de la tarde con el mensaje armado: tocás y lo mandás vos.', 'octavio', 1000);
+      estado('octavio', 'trabaja', 'mirando el plan…'); log('octavio', 'prepara los mensajes del plan de hoy');
+      await bot('Plan de hoy: 10 contactos (5 a la mañana y 5 a la tarde), repartidos entre 3 versiones del mensaje. Voy anotando cuál responde más para quedarnos con la mejor.\nTe dejo los 5 de la tarde con el mensaje armado: tocás y lo mandás vos.', 'octavio', 1000);
       estado('octavio', '', 'libre');
     },
     consultas: async function(){
@@ -259,7 +259,7 @@ footer{margin-top:70px;padding:26px 0;border-top:1px solid var(--linea)}
     if (ocupado) return; ocupado = true; this.disabled = true; var self = this;
     min = 21 * 60; $('reloj').textContent = hora();
     estado('octavio', 'trabaja', 'resumen nocturno…'); log('octavio', 'arma el resumen de la noche');
-    await bot('Resumen de la noche:\n• Publicados: 1 post de Trama y 1 de Zafirah\n• WhatsApp: mandaste 10, respondieron 2\n• Consultas: 1 nueva, ya respondida\n• Errores: 1 pasajero, se arregló solo\nMañana a las 6 reviso los errores de hoy y abro un aviso para arreglarlos.', 'octavio', 1300);
+    await bot('Resumen de la noche:\n• Publicados: 1 post de Trama y 1 de Zafirah\n• WhatsApp: mandaste los 10 del plan; las respuestas te las aviso apenas lleguen\n• Consultas: 1 nueva, ya respondida\n• Errores: 1 pasajero, se arregló solo\nMañana a las 6 reviso los errores de hoy y abro un aviso para arreglarlos.', 'octavio', 1300);
     estado('octavio', '', 'libre'); ocupado = false; self.disabled = false;
   };
   $('falla').onclick = async function(){
