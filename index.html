@@ -335,7 +335,22 @@ section.bloque{padding:120px 0}
     }, { threshold: 0.2 }) : null;
     document.querySelectorAll('.revela:not(.h)').forEach(function(el){ io ? io.observe(el) : el.classList.add('visto'); });
     // cuando no tienen nada que hacer, se pasean despacio
-    setInterval(function(){ curs.forEach(function(o){ if (!o.ocupado && Math.random() < 0.6) mover(o, 40 + Math.random() * (innerWidth - 120), 80 + Math.random() * (innerHeight - 160), 2200); }); }, 2600);
+    // Cuando la portada terminó de armarse, los cursores libres giran alrededor del mouse.
+    // En celular (sin mouse) se pasean despacio.
+    var raton = null, armado = false, ang = 0;
+    addEventListener('pointermove', function(e){ if (e.pointerType === 'mouse') raton = { x: e.clientX, y: e.clientY }; }, { passive: true });
+    (function orbita(){
+      if (!armado && curs.every(function(o){ return !o.ocupado; })) armado = true;
+      ang += 0.018;
+      if (armado && raton) curs.forEach(function(o, i){
+        if (o.ocupado) return;
+        var a = ang + i * Math.PI / 2, r = 64 + Math.sin(ang * 2 + i) * 10;
+        o.x += (raton.x + Math.cos(a) * r - o.x) * 0.1; o.y += (raton.y + Math.sin(a) * r - o.y) * 0.1;
+        o.el.style.transitionDuration = '0ms'; o.el.style.transform = 'translate(' + o.x + 'px,' + o.y + 'px)';
+      });
+      requestAnimationFrame(orbita);
+    })();
+    setInterval(function(){ if (raton || !armado) return; curs.forEach(function(o){ if (!o.ocupado && Math.random() < 0.6) mover(o, 40 + Math.random() * (innerWidth - 120), 80 + Math.random() * (innerHeight - 160), 2200); }); }, 2600);
   }
 })();
 </script>
