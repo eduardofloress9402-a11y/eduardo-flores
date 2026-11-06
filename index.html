@@ -309,8 +309,35 @@ section.bloque{padding:120px 0}
       var sp = el.firstElementChild, t = el.dataset.txt; s.style.width = '8px'; el.classList.add('visto');
       for (var i = 1; i <= t.length; i++) { sp.textContent = t.slice(0, i); var rr = sp.getBoundingClientRect(); mover(o, rr.right + 4, ty, 110); s.style.width = (rr.right - r.left + 6) + 'px'; await espera(120); }
       s.lastChild.textContent = Math.round(el.getBoundingClientRect().width) + ' × ' + Math.round(r.height);
-    } else { el.classList.add('visto'); mover(o, tx + 14, ty + 10, 260); }
+    } else if (el.classList.contains('cinta') || !textos(el).length) { el.classList.add('visto'); mover(o, tx + 14, ty + 10, 260); }
+    else { await tipearBloque(o, el, rapido); }
     await espera(rapido ? 220 : 480); s.style.opacity = 0; setTimeout(function(){ s.remove(); }, 450);
+  }
+  // Textos del bloque (sin espacios sueltos)
+  function textos(el){
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, { acceptNode: function(n){ return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT; } }), r = [];
+    while (w.nextNode()) r.push(w.currentNode); return r;
+  }
+  // Escribe el bloque letra por letra; el texto que falta queda invisible pero ocupa su lugar (la página no salta)
+  async function tipearBloque(o, el, rapido){
+    var piezas = textos(el).map(function(n){
+      var w = document.createElement('span'), ya = document.createElement('span'), fa = document.createElement('span');
+      fa.style.visibility = 'hidden'; fa.textContent = n.nodeValue; w.appendChild(ya); w.appendChild(fa);
+      n.parentNode.replaceChild(w, n); return { n: n, w: w, ya: ya, fa: fa, t: n.nodeValue };
+    });
+    el.classList.add('visto');
+    var total = piezas.reduce(function(a, p){ return a + p.t.length; }, 0);
+    var T = (rapido ? 0.5 : 1) * Math.min(2800, 500 + total * 24), pasos = Math.max(1, Math.min(total, Math.round(T / 22))), por = Math.ceil(total / pasos), dt = T / pasos;
+    for (var k = 0; k < piezas.length; k++) {
+      var p = piezas[k], i = 0;
+      while (i < p.t.length) {
+        i = Math.min(p.t.length, i + por); p.ya.textContent = p.t.slice(0, i); p.fa.textContent = p.t.slice(i);
+        var rs = p.ya.getClientRects(), r = rs[rs.length - 1];
+        if (r) mover(o, r.right + 2, r.top + r.height * 0.55, dt);
+        await espera(dt);
+      }
+    }
+    piezas.forEach(function(p){ p.w.parentNode.replaceChild(p.n, p.w); });
   }
   function encolar(o, el){ o.q.push(el); if (!o.ocupado) correr(o); }
   async function correr(o){ o.ocupado = true; while (o.q.length) { await armar(o, o.q.shift(), o.q.length > 1); } o.ocupado = false; o.el.classList.add('quieto'); }
