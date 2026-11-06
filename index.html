@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Eduardo Flores · Software & Web</title>
+<meta name="description" content="Eduardo Flores, desarrollador de software y webs en Córdoba, Argentina. Webs, herramientas digitales y automatizaciones con IA.">
+<meta name="theme-color" content="#08080A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2308080A'/%3E%3Ctext x='10' y='44' font-family='Arial Black' font-size='30' fill='%23F2F0EB'%3Eef%3C/text%3E%3Ccircle cx='52' cy='42' r='5' fill='%23E5262A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--negro:#08080A;--negro2:#111114;--linea:#232328;--hueso:#F2F0EB;--gris:#8A8A93;--rojo:#E5262A;--rojo2:#FF4A3D;--f-g:"Anton",Impact,sans-serif;--f-t:"Inter Tight",system-ui,sans-serif;--f-m:"JetBrains Mono",ui-monospace,monospace;--ease:cubic-bezier(.2,.75,.2,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--negro);color:var(--hueso);font:17px/1.6 var(--f-t);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+::selection{background:var(--rojo);color:#fff}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:24px}
+.mono{font-family:var(--f-m);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris)}
+.mono b{color:var(--rojo);font-weight:500}
+
+/* arranque */
+#boot{position:fixed;inset:0;z-index:100;background:var(--negro);display:grid;place-items:center;transition:opacity .7s var(--ease),visibility .7s}
+#boot.fuera{opacity:0;visibility:hidden}
+#boot canvas{position:absolute;inset:0;width:100%;height:100%}
+#boot .pct{position:absolute;left:24px;bottom:22px;font:500 12px var(--f-m);letter-spacing:.14em;color:var(--gris)}
+#boot .pct b{color:var(--hueso);font-weight:500}
+#boot .saltar{position:absolute;right:24px;bottom:18px;background:none;border:1px solid var(--linea);color:var(--gris);font:12px var(--f-m);letter-spacing:.12em;padding:8px 12px;border-radius:999px;cursor:pointer}
+
+/* nav */
+.nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;width:min(1180px,calc(100% - 24px));display:flex;align-items:center;gap:18px;padding:10px 12px 10px 18px;border:1px solid var(--linea);border-radius:16px;background:rgba(10,10,12,.72);backdrop-filter:blur(14px)}
+.logo{font:400 22px/1 var(--f-g);text-decoration:none;letter-spacing:.02em}
+.logo i{color:var(--rojo);font-style:normal}
+.nav nav{margin-left:auto;display:flex;gap:22px;font-size:14px}
+.nav nav a{text-decoration:none;color:var(--gris);transition:color .2s}
+.nav nav a:hover{color:var(--hueso)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--hueso);color:var(--negro);text-decoration:none;font-weight:600;font-size:14px;padding:10px 16px;border-radius:10px;transition:transform .3s var(--ease),background .3s}
+.btn:hover{transform:translateY(-2px);background:#fff}
+.btn-r{background:var(--rojo);color:#fff}.btn-r:hover{background:var(--rojo2)}
+@media (max-width:720px){.nav nav{display:none}.nav .btn{margin-left:auto}}
+
+/* portada */
+.heroe{min-height:100svh;position:relative;padding:140px 0 60px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.heroe>.wrap{width:100%;min-width:0}
+.heroe::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 70% 30%,rgba(229,38,42,.16),transparent 70%);pointer-events:none}
+.gigante{font:400 clamp(92px,21vw,320px)/.82 var(--f-g);letter-spacing:-.01em;text-transform:uppercase;color:var(--rojo);margin:0;white-space:nowrap;position:relative}
+.gigante span{display:inline-block;transform:translateY(105%);opacity:0}
+.listo .gigante span{animation:sube 1s var(--ease) forwards}
+@keyframes sube{to{transform:none;opacity:1}}
+.fila{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:end;margin-top:34px;position:relative}
+.hola{font:400 clamp(28px,3.6vw,48px)/1 var(--f-g);text-transform:uppercase}
+.hola small{display:block;font:400 italic 22px var(--f-t);text-transform:none;color:var(--gris);margin-bottom:8px}
+.hola em{font-style:normal;background:var(--rojo);color:#fff;padding:2px 10px 0;margin-left:4px}
+.bajada{max-width:46ch;color:#C9C7C1;margin:22px 0 26px}
+.acciones{display:flex;gap:12px;flex-wrap:wrap}
+.btn-l{background:transparent;color:var(--hueso);box-shadow:inset 0 0 0 1px var(--linea)}.btn-l:hover{background:var(--negro2)}
+.foto{justify-self:end;width:min(340px,100%);aspect-ratio:4/5;border-radius:6px;overflow:hidden;position:relative;background:linear-gradient(160deg,#1a1a1f,#0c0c0f);border:1px solid var(--linea);transform:rotate(2.5deg);transition:transform .6s var(--ease)}
+.foto:hover{transform:rotate(0) scale(1.02)}
+.foto img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1);mix-blend-mode:normal}
+.foto::after{content:"";position:absolute;inset:0;background:var(--rojo);mix-blend-mode:multiply;opacity:.35}
+.foto .ini{position:absolute;inset:0;display:grid;place-items:center;font:400 120px var(--f-g);color:#2a2a30}
+.foto .tag{position:absolute;left:12px;bottom:12px;z-index:2;font:500 11px var(--f-m);letter-spacing:.12em;background:var(--negro);padding:6px 9px;border-radius:4px}
+.foto .tag b{color:var(--rojo2);font-weight:500}
+@media (max-width:820px){.fila{grid-template-columns:minmax(0,1fr)}.foto{justify-self:start;width:62%}}
+
+/* cinta */
+.cinta{border-block:1px solid var(--linea);overflow:hidden;padding:16px 0;white-space:nowrap}
+.cinta div{display:inline-flex;gap:46px;animation:corre 32s linear infinite;font:400 28px var(--f-g);text-transform:uppercase;color:#3a3a41}
+.cinta div span:nth-child(odd){color:var(--hueso)}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+/* secciones */
+section.bloque{padding:120px 0}
+.titulo{font:400 clamp(52px,8vw,120px)/.9 var(--f-g);text-transform:uppercase;margin:14px 0 0}
+.titulo i{font-style:normal;color:var(--rojo)}
+.revela{opacity:0;transform:translateY(40px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.revela.visto{opacity:1;transform:none}
+
+.filo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;margin-top:48px}
+.filo p{color:#C9C7C1;margin:0 0 16px;font-size:19px}
+.filo p strong{color:var(--hueso);font-weight:600}
+.principios{display:grid;gap:12px}
+.principio{border:1px solid var(--linea);border-radius:12px;padding:20px 22px;background:var(--negro2);display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;transition:border-color .3s}
+.principio:hover{border-color:var(--rojo)}
+.principio .n{font:400 34px/1 var(--f-g);color:var(--rojo)}
+.principio h3{margin:0 0 4px;font:600 18px var(--f-t)}
+.principio p{margin:0;font-size:15px;color:var(--gris)}
+@media (max-width:820px){.filo{grid-template-columns:minmax(0,1fr)}}
+
+.proyectos{display:grid;gap:22px;margin-top:48px}
+.proy{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);border:1px solid var(--linea);border-radius:18px;overflow:hidden;background:var(--negro2);min-height:380px}
+.proy .vista{position:relative;overflow:hidden;background:#0d0d10;display:grid;place-items:center;padding:28px}
+.proy .info{padding:34px;display:flex;flex-direction:column;gap:12px;border-left:1px solid var(--linea)}
+.proy h3{font:400 clamp(40px,5vw,64px)/.95 var(--f-g);text-transform:uppercase;margin:4px 0 0}
+.proy p{margin:0;color:#C9C7C1}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.chip{font:500 11px var(--f-m);letter-spacing:.08em;border:1px solid var(--linea);border-radius:999px;padding:6px 10px;color:var(--gris)}
+.estado{font:500 11px var(--f-m);letter-spacing:.12em;color:var(--rojo2)}
+.estado::before{content:"● "}
+@media (max-width:880px){.proy{grid-template-columns:minmax(0,1fr)}.proy .info{border-left:0;border-top:1px solid var(--linea)}}
+
+/* vistas de proyectos (dibujadas con CSS) */
+.ventana{width:100%;max-width:470px;border:1px solid #2a2a31;border-radius:12px;background:#121216;box-shadow:0 40px 80px -40px rgba(229,38,42,.45);transform:perspective(900px) rotateY(-8deg) rotateX(4deg);transition:transform .7s var(--ease)}
+.proy:hover .ventana{transform:none}
+.ventana .barra{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid #24242a}
+.ventana .barra i{width:9px;height:9px;border-radius:50%;background:#2e2e35}
+.ventana .barra i:first-child{background:var(--rojo)}
+.ventana .cuerpo{padding:16px;display:grid;gap:10px;font:12px var(--f-m);color:var(--gris)}
+.nodos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.nodo{border:1px solid #2a2a31;border-radius:10px;padding:12px;background:#17171c}
+.nodo b{display:block;font:400 20px var(--f-g);color:var(--hueso)}
+.nodo.on{border-color:var(--rojo)}
+.nodo.on b{color:var(--rojo2)}
+.log{border-radius:8px;background:#0d0d10;padding:10px;line-height:1.7}
+.log .ok{color:#59D98E}.log .r{color:var(--rojo2)}
+.fila-csv{display:flex;justify-content:space-between;border-bottom:1px dashed #26262c;padding:6px 0}
+.fila-csv .r{color:var(--rojo2)}
+.trama-vista{font:400 44px/.95 var(--f-g);text-transform:uppercase;color:var(--hueso)}
+.trama-vista i{font-style:normal;color:#F0B23A}
+
+/* herramientas */
+.herr{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:40px}
+.herr div{border:1px solid var(--linea);border-radius:12px;padding:18px;font:500 15px var(--f-t);background:var(--negro2);display:flex;justify-content:space-between;align-items:center;transition:border-color .3s,transform .3s var(--ease)}
+.herr div:hover{border-color:var(--rojo);transform:translateY(-3px)}
+.herr span{font:11px var(--f-m);color:var(--gris)}
+
+/* contacto */
+.contacto{padding:120px 0 60px;border-top:1px solid var(--linea);position:relative;overflow:hidden}
+.contacto .gigante{font-size:clamp(70px,15vw,230px);color:var(--hueso)}
+.contacto .gigante i{font-style:normal;color:var(--rojo)}
+.contacto .fila{align-items:center}
+.pie{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:70px;padding-top:22px;border-top:1px solid var(--linea)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.gigante span{transform:none;opacity:1}.revela{opacity:1;transform:none}#boot{display:none}}
+</style>
+</head>
+<body>
+<div id="boot" aria-hidden="true"><canvas id="particulas"></canvas><div class="pct">CARGANDO <b id="pct">0</b>%</div><button class="saltar" id="saltar">SALTAR</button></div>
+
+<header class="nav">
+  <a class="logo" href="#">ef<i>.</i></a>
+  <nav aria-label="Secciones"><a href="#enfoque">Enfoque</a><a href="#proyectos">Proyectos</a><a href="#herramientas">Herramientas</a></nav>
+  <a class="btn" href="#contacto">Hablemos ↗</a>
+</header>
+
+<main>
+<section class="heroe">
+  <div class="wrap">
+    <p class="mono"><b>■</b> Software developer · Web builder · Córdoba, AR</p>
+    <h1 class="gigante" aria-label="Portfolio"><span>Portfolio</span></h1>
+    <div class="fila">
+      <div>
+        <div class="hola"><small>Hola, soy</small>Eduardo <em>Flores</em></div>
+        <p class="bajada">Construyo webs, herramientas digitales y automatizaciones con IA. Ideas que se convierten en software que se usa todos los días.</p>
+        <div class="acciones"><a class="btn btn-r" href="#proyectos">Ver proyectos ↓</a><a class="btn btn-l" href="#contacto">Hablemos</a></div>
+      </div>
+      <figure class="foto" style="margin:0"><img id="foto" src="foto.jpg" alt="Eduardo Flores" onerror="this.remove()"><span class="tag"><b>●</b> DISPONIBLE PARA PROYECTOS</span></figure>
+    </div>
+  </div>
+</section>
+
+<div class="cinta" aria-hidden="true"><div><span>Webs</span><span>Automatización</span><span>IA aplicada</span><span>Sistemas a medida</span><span>Python</span><span>FastAPI</span><span>Webs</span><span>Automatización</span><span>IA aplicada</span><span>Sistemas a medida</span><span>Python</span><span>FastAPI</span></div></div>
+
+<section class="bloque" id="enfoque">
+  <div class="wrap">
+    <p class="mono revela"><b>01</b> / Background & filosofía</p>
+    <h2 class="titulo revela">Construir, <i>probar</i>, iterar.</h2>
+    <div class="filo">
+      <div class="revela">
+        <p>La programación me interesa desde los 17 años. Empecé aprendiendo con videos de otros programadores y en 2020 arranqué la carrera de <strong>Desarrollo de Software</strong>.</p>
+        <p>Mi primer proyecto fue la web de Zafirah. Después llegaron FinAudit, el Command Center, un creador de cabañas en 2D y 3D y otras demos. Para construirlos me apoyo en <strong>herramientas de IA</strong>, siempre con una persona revisando lo importante antes de que salga.</p>
+      </div>
+      <div class="principios revela">
+        <div class="principio"><span class="n">01</span><div><h3>Primero el problema</h3><p>Entender cómo funciona el negocio antes de escribir una línea.</p></div></div>
+        <div class="principio"><span class="n">02</span><div><h3>Algo que se pueda usar</h3><p>Versiones que se prueban rápido y mejoran con el uso real.</p></div></div>
+        <div class="principio"><span class="n">03</span><div><h3>IA con control humano</h3><p>Automatizo lo repetitivo; las decisiones importantes pasan por una persona.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bloque" id="proyectos" style="padding-top:40px">
+  <div class="wrap">
+    <p class="mono revela"><b>02</b> / Proyectos seleccionados</p>
+    <h2 class="titulo revela">Detrás de cada <i>proyecto</i>.</h2>
+    <div class="proyectos">
+      <article class="proy revela">
+        <div class="vista"><div class="ventana"><div class="barra"><i></i><i></i><i></i></div><div class="cuerpo">
+          <div class="nodos"><div class="nodo on"><b>Trama</b>contenido</div><div class="nodo"><b>Zafirah</b>operación</div><div class="nodo"><b>FinAudit</b>análisis</div></div>
+          <div class="log"><span class="ok">✓</span> revisión aprobada · publicar 19:30<br><span class="ok">✓</span> consulta nueva → seguimiento<br><span class="r">!</span> error pasajero → reintento en 5 min</div>
+        </div></div></div>
+        <div class="info"><span class="estado">EN EVOLUCIÓN</span><h3>Command Center</h3><p>Una oficina de agentes de IA que trabaja para varios proyectos: prepara contenido, sigue consultas, revisa antes de publicar y avisa por Telegram solo cuando algo necesita una persona.</p><div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">IA aplicada</span><span class="chip">Telegram</span></div></div>
+      </article>
+      <article class="proy revela">
+        <div class="vista"><div class="ventana"><div class="barra"><i></i><i></i><i></i></div><div class="cuerpo">
+          <div style="color:var(--hueso)">movimientos.csv · 1.248 filas</div>
+          <div class="fila-csv"><span>Pagos duplicados</span><span class="r">3 hallazgos</span></div>
+          <div class="fila-csv"><span>Facturas pendientes</span><span class="r">7 hallazgos</span></div>
+          <div class="fila-csv"><span>Patrones recurrentes</span><span>ok</span></div>
+          <div class="log"><span class="ok">✓</span> informe.pdf listo para revisar</div>
+        </div></div></div>
+        <div class="info"><span class="estado">EN EVOLUCIÓN</span><h3>FinAudit</h3><p>Análisis de movimientos financieros desde archivos: detecta hallazgos, los ordena y genera un informe en PDF para revisar los datos con más claridad.</p><div class="chips"><span class="chip">Python</span><span class="chip">Datos</span><span class="chip">PostgreSQL</span><span class="chip">PDF</span></div></div>
+      </article>
+      <article class="proy revela">
+        <div class="vista"><div class="ventana"><div class="barra"><i></i><i></i><i></i></div><div class="cuerpo" style="padding:28px">
+          <div class="trama-vista">Ideas que<br>encuentran<br>su <i>forma.</i></div>
+          <div style="margin-top:8px">trama · webs e instagram para negocios</div>
+        </div></div></div>
+        <div class="info"><span class="estado">ACTIVO</span><h3>Trama</h3><p>Mi estudio de webs e Instagram para negocios. Hoy, sobre todo inmobiliarias: su cartera en una web propia, con filtros, fichas y consultas directas por WhatsApp.</p><div class="chips"><span class="chip">Web</span><span class="chip">Diseño</span><span class="chip">Instagram</span></div><a class="btn btn-l" style="align-self:flex-start" href="https://trama-dev.netlify.app" target="_blank" rel="noopener">Visitar Trama ↗</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="bloque" id="herramientas" style="padding-top:40px">
+  <div class="wrap">
+    <p class="mono revela"><b>03</b> / Herramientas en mis proyectos</p>
+    <h2 class="titulo revela">Con qué <i>construyo</i>.</h2>
+    <div class="herr revela"><div>JavaScript<span>JS</span></div><div>Python<span>PY</span></div><div>FastAPI<span>API</span></div><div>PostgreSQL<span>DB</span></div><div>GitHub<span>GIT</span></div><div>IA aplicada<span>AI</span></div><div>HTML y CSS<span>WEB</span></div><div>Telegram bots<span>BOT</span></div></div>
+  </div>
+</section>
+</main>
+
+<footer class="contacto" id="contacto">
+  <div class="wrap">
+    <p class="mono revela"><b>04</b> / Contacto</p>
+    <h2 class="gigante revela">Hable<i>mos.</i></h2>
+    <div class="fila revela">
+      <p class="bajada" style="margin:0">¿Tenés una idea, un proceso que se repite o un negocio que necesita su web? Contame y lo vemos.</p>
+      <div class="acciones" style="justify-self:end"><a class="btn btn-r" href="https://trama-dev.netlify.app" target="_blank" rel="noopener">Escribime ↗</a><a class="btn btn-l" href="https://github.com/eduardofloress9402-a11y" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </div>
+    <div class="pie mono"><span>© <span id="anio"></span> Eduardo Flores</span><span>Córdoba, Argentina</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('anio').textContent = new Date().getFullYear();
+  var boot = document.getElementById('boot');
+  function listo(){ if(!boot || boot.classList.contains('fuera')) return; boot.classList.add('fuera'); document.body.classList.add('listo'); setTimeout(function(){ boot.remove(); }, 800); }
+  document.getElementById('saltar').onclick = listo;
+  if (reduce) { listo(); } else {
+    // Partículas que se juntan y forman "ef." (como el arranque del reel)
+    var cv = document.getElementById('particulas'), ctx = cv.getContext('2d'), dpr = Math.min(2, devicePixelRatio || 1);
+    var W, H, pts = [], destino = [];
+    function medir(){ W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr; }
+    medir();
+    var off = document.createElement('canvas'), ow = 360, oh = 160; off.width = ow; off.height = oh;
+    var o = off.getContext('2d'); o.fillStyle = '#fff'; o.font = '140px Anton, Impact, sans-serif'; o.textBaseline = 'middle'; o.fillText('ef', 40, 86);
+    o.beginPath(); o.arc(250, 120, 16, 0, Math.PI * 2); o.fill();
+    var data = o.getImageData(0, 0, ow, oh).data;
+    for (var y = 0; y < oh; y += 5) for (var x = 0; x < ow; x += 5) if (data[(y * ow + x) * 4 + 3] > 128) destino.push([x, y, x > 228]);
+    var esc = Math.min(W / ow, H / oh) * 0.45, ox = (W - ow * esc) / 2, oy = (H - oh * esc) / 2;
+    destino.forEach(function(d){ pts.push({ x: Math.random() * W, y: Math.random() * H, tx: ox + d[0] * esc, ty: oy + d[1] * esc, r: d[2], d: Math.random() * 0.5 }); });
+    var t0 = performance.now(), dur = 2300;
+    (function cuadro(now){
+      if (!document.body.contains(cv)) return;
+      var p = Math.min(1, (now - t0) / dur);
+      document.getElementById('pct').textContent = Math.round(p * 100);
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < pts.length; i++) {
+        var q = pts[i], k = Math.max(0, Math.min(1, (p - q.d * 0.5) / 0.6)); k = 1 - Math.pow(1 - k, 3);
+        var x = q.x + (q.tx - q.x) * k, y = q.y + (q.ty - q.y) * k;
+        ctx.fillStyle = q.r ? '#E5262A' : 'rgba(242,240,235,' + (0.35 + k * 0.65) + ')';
+        ctx.fillRect(x, y, 2.4 * dpr, 2.4 * dpr);
+      }
+      if (p < 1) requestAnimationFrame(cuadro); else setTimeout(listo, 450);
+    })(t0);
+  }
+  // Los títulos gigantes siempre entran en el ancho (aunque cambie la fuente)
+  function encajar(){ document.querySelectorAll('.gigante').forEach(function(el){ el.style.fontSize = ''; var w = el.clientWidth, s = el.scrollWidth; if (s > w) el.style.fontSize = (parseFloat(getComputedStyle(el).fontSize) * w / s * 0.97) + 'px'; }); }
+  encajar(); addEventListener('resize', encajar); if (document.fonts) document.fonts.ready.then(encajar);
+  // Las secciones aparecen al scrollear
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('visto'); io.unobserve(e.target); } }); }, { threshold: 0.15 }) : null;
+  document.querySelectorAll('.revela').forEach(function(el){ io ? io.observe(el) : el.classList.add('visto'); });
+})();
+</script>
+</body>
+</html>
