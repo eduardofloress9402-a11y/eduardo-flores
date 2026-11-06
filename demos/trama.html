@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trama · Webs de muestra</title>
+<meta name="description" content="Webs de muestra hechas en Trama, el estudio de webs e Instagram de Eduardo Flores.">
+<meta name="theme-color" content="#08080A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2308080A'/%3E%3Ctext x='10' y='44' font-family='Arial Black' font-size='30' fill='%23F2F0EB'%3Eef%3C/text%3E%3Ccircle cx='52' cy='42' r='5' fill='%23E5262A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--negro:#08080A;--negro2:#111114;--negro3:#17171c;--linea:#232328;--hueso:#F2F0EB;--gris:#8A8A93;--suave:#C9C7C1;--rojo:#E5262A;--rojo2:#FF4A3D;--f-g:"Anton",Impact,sans-serif;--f-t:"Inter Tight",system-ui,sans-serif;--f-m:"JetBrains Mono",ui-monospace,monospace;--ease:cubic-bezier(.2,.75,.2,1)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--negro);color:var(--hueso);font:16px/1.55 var(--f-t);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.mono{font:500 12px var(--f-m);letter-spacing:.14em;text-transform:uppercase;color:var(--gris)}
+.mono b{color:var(--rojo);font-weight:500}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--linea)}
+.top a{text-decoration:none;font-size:14px;color:var(--gris)}.top a:hover{color:var(--hueso)}
+.logo{font:400 22px var(--f-g)!important;color:var(--hueso)!important}.logo i{color:var(--rojo);font-style:normal}
+h1{font:400 clamp(52px,9vw,116px)/.9 var(--f-g);text-transform:uppercase;margin:26px 0 0}
+h1 i{font-style:normal;color:var(--rojo)}
+.intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:40px;align-items:end;margin:24px 0 36px}
+.intro p{margin:0;color:var(--suave);font-size:18px;max-width:58ch}
+.aviso{border:1px solid var(--linea);border-radius:12px;padding:16px 18px;background:var(--negro2);font-size:14px;color:var(--suave)}
+@media (max-width:860px){.intro{grid-template-columns:minmax(0,1fr)}}
+.filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.filtros button{background:transparent;border:1px solid var(--linea);color:var(--gris);font:500 13px var(--f-t);padding:8px 14px;border-radius:999px;cursor:pointer;transition:all .2s}
+.filtros button.on,.filtros button:hover{background:var(--hueso);color:var(--negro);border-color:var(--hueso)}
+.grilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:820px){.grilla{grid-template-columns:minmax(0,1fr)}}
+.sitio{border:1px solid var(--linea);border-radius:18px;overflow:hidden;background:var(--negro2);display:flex;flex-direction:column;transition:border-color .3s,transform .4s var(--ease)}
+.sitio:hover{border-color:#3a3a42;transform:translateY(-4px)}
+.sitio.oculto{display:none}
+.nav-v{display:flex;gap:6px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--linea);background:#141418}
+.nav-v i{width:9px;height:9px;border-radius:50%;background:#2e2e35}.nav-v i:first-child{background:var(--rojo)}
+.nav-v span{margin-left:10px;flex:1;font:12px var(--f-m);color:var(--gris);background:var(--negro3);border-radius:6px;padding:4px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.captura{aspect-ratio:16/9;overflow:hidden;background:#0d0d10}
+.captura img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 1.2s var(--ease)}
+.sitio:hover .captura img{transform:scale(1.03)}
+.info{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.info .rubro{font:500 11px var(--f-m);letter-spacing:.12em;text-transform:uppercase;color:var(--rojo2)}
+.info h2{margin:0;font:400 36px/1 var(--f-g);text-transform:uppercase}
+.info p{margin:0;color:var(--suave);font-size:15px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.chip{font:500 11px var(--f-m);border:1px solid var(--linea);border-radius:999px;padding:5px 9px;color:var(--gris)}
+.btn{align-self:flex-start;margin-top:auto;display:inline-flex;gap:8px;align-items:center;background:var(--hueso);color:var(--negro);text-decoration:none;font:600 14px var(--f-t);padding:10px 16px;border-radius:10px;transition:transform .3s var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.cta{margin-top:50px;border:1px solid var(--linea);border-radius:18px;padding:30px;display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap;background:var(--negro2)}
+.cta h3{margin:0;font:400 34px/1 var(--f-g);text-transform:uppercase}
+.cta p{margin:6px 0 0;color:var(--gris)}
+.btn-r{background:var(--rojo);color:#fff;margin:0}
+footer{margin-top:70px;padding:26px 0;border-top:1px solid var(--linea)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="logo" href="../">ef<i>.</i></a><a href="../#proyectos">← Volver al portfolio</a></div>
+  <p class="mono" style="margin-top:34px"><b>■</b> Webs de muestra</p>
+  <h1>Hecho en <i>Trama</i></h1>
+  <div class="intro">
+    <p>Trama es mi estudio de webs e Instagram para negocios. Estas son webs de muestra que armé para distintos rubros: se pueden recorrer completas, desde la compu o el celular.</p>
+    <div class="aviso">Son negocios inventados para mostrar cómo quedaría una web real de cada rubro.</div>
+  </div>
+
+  <div class="filtros" id="filtros" role="group" aria-label="Filtrar por rubro">
+    <button class="on" data-f="todos">Todos</button><button data-f="inmuebles">Inmuebles y obras</button><button data-f="servicios">Servicios con turno</button><button data-f="comercio">Comercios</button>
+  </div>
+
+  <div class="grilla" id="grilla">
+    <article class="sitio" data-f="inmuebles"><div class="nav-v"><i></i><i></i><i></i><span>umbral · inmobiliaria</span></div><div class="captura"><img src="img/inmobiliaria.jpg" alt="Captura de Umbral, inmobiliaria de muestra" loading="lazy"></div>
+      <div class="info"><span class="rubro">Inmobiliaria</span><h2>Umbral</h2><p>Buscador de propiedades con filtros por operación, zona y ambientes, fichas con fotos y consulta directa por WhatsApp.</p><div class="chips"><span class="chip">Buscador</span><span class="chip">Fichas</span><span class="chip">WhatsApp</span></div><a class="btn" href="https://trama-dev.netlify.app/muestras/inmobiliaria/" target="_blank" rel="noopener">Abrir la web ↗</a></div></article>
+    <article class="sitio" data-f="inmuebles"><div class="nav-v"><i></i><i></i><i></i><span>palmera remodeling · miami</span></div><div class="captura"><img src="img/remodelacion.jpg" alt="Captura de Palmera Remodeling, sitio de muestra" loading="lazy"></div>
+      <div class="info"><span class="rubro">Remodelación · Miami</span><h2>Palmera Remodeling</h2><p>Web en español e inglés para una empresa de remodelación: trabajos, servicios y pedido de presupuesto.</p><div class="chips"><span class="chip">Bilingüe</span><span class="chip">Presupuesto</span><span class="chip">Galería</span></div><a class="btn" href="https://trama-dev.netlify.app/muestras/remodelacion/" target="_blank" rel="noopener">Abrir la web ↗</a></div></article>
+    <article class="sitio" data-f="inmuebles"><div class="nav-v"><i></i><i></i><i></i><span>obra austral · construcción</span></div><div class="captura"><img src="img/construccion.jpg" alt="Captura de Obra Austral, sitio de muestra" loading="lazy"></div>
+      <div class="info"><span class="rubro">Construcción</span><h2>Obra Austral</h2><p>Cabañas en steel frame y refacciones: cómo trabajan, servicios y pedido de presupuesto.</p><div class="chips"><span class="chip">Servicios</span><span class="chip">Proceso</span><span class="chip">Presupuesto</span></div><a class="btn" href="https://trama-dev.netlify.app/muestras/construccion/" target="_blank" rel="noopener">Abrir la web ↗</a></div></article>
+    <article class="sitio" data-f="servicios"><div class="nav-v"><i></i><i></i><i></i><span>bruma · salón</span></div><div class="captura"><img src="img/turnos.jpg" alt="Captura de Bruma, salón de muestra" loading="lazy"></div>
+      <div class="info"><span class="rubro">Peluquería y estética</span><h2>Bruma</h2><p>Reserva de turnos en dos toques: el cliente elige servicio, día y horario, y le llega la confirmación al celular.</p><div class="chips"><span class="chip">Turnos</span><span class="chip">Servicios</span><span class="chip">Confirmación</span></div><a class="btn" href="https://trama-dev.netlify.app/muestras/turnos/" target="_blank" rel="noopener">Abrir la web ↗</a></div></article>
+    <article class="sitio" data-f="servicios"><div class="nav-v"><i></i><i></i><i></i><span>pulso · estudio</span></div><div class="captura"><img src="img/estudio.jpg" alt="Captura de Pulso, estudio de muestra" loading="lazy"></div>
+      <div class="info"><span class="rubro">Pilates y yoga</span><h2>Pulso</h2><p>Grilla de clases con filtro por disciplina, planes y reserva de una clase de prueba.</p><div class="chips"><span class="chip">Clases</span><span class="chip">Filtros</span><span class="chip">Planes</span></div><a class="btn" href="https://trama-dev.netlify.app/muestras/estudio/" target="_blank" rel="noopener">Abrir la web ↗</a></div></article>
+    <article class="sitio" data-f="comercio"><div class="nav-v"><i></i><i></i><i></i><span>grano fino · café</span></div><div class="captura"><img src="img/cafe.jpg" alt="Captura de Grano Fino, café de muestra" loading="lazy"></div>
+      <div class="info"><span class="rubro">Cafetería</span><h2>Grano Fino</h2><p>Carta online y pedido para llevar: el cliente arma su pedido desde el celular y pasa a retirarlo.</p><div class="chips"><span class="chip">Carta</span><span class="chip">Pedidos</span><span class="chip">Horarios</span></div><a class="btn" href="https://trama-dev.netlify.app/muestras/cafe/" target="_blank" rel="noopener">Abrir la web ↗</a></div></article>
+    <article class="sitio" data-f="comercio"><div class="nav-v"><i></i><i></i><i></i><span>hilván · tienda</span></div><div class="captura"><img src="img/ropa.jpg" alt="Captura de Hilván, tienda de muestra" loading="lazy"></div>
+      <div class="info"><span class="rubro">Tienda de ropa</span><h2>Hilván</h2><p>Tienda con colección, bolsa de compras y guía de talles, pensada para comprar desde el celular.</p><div class="chips"><span class="chip">Tienda</span><span class="chip">Bolsa</span><span class="chip">Talles</span></div><a class="btn" href="https://trama-dev.netlify.app/muestras/ropa/" target="_blank" rel="noopener">Abrir la web ↗</a></div></article>
+  </div>
+
+  <div class="cta"><div><h3>¿Querés una así para tu negocio?</h3><p>Web + Instagram, con el dominio a tu nombre.</p></div><a class="btn btn-r" href="https://trama-dev.netlify.app" target="_blank" rel="noopener">Ir a Trama ↗</a></div>
+  <footer class="mono">Trama · un proyecto de Eduardo Flores · <a href="../">volver al portfolio</a></footer>
+</div>
+<script>
+(function(){
+  var f = document.getElementById('filtros');
+  f.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    f.querySelectorAll('button').forEach(function(x){ x.classList.toggle('on', x === b); });
+    document.querySelectorAll('.sitio').forEach(function(s){ s.classList.toggle('oculto', b.dataset.f !== 'todos' && s.dataset.f !== b.dataset.f); });
+  });
+})();
+</script>
+</body>
+</html>
