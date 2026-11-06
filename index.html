@@ -249,6 +249,10 @@ section.bloque{padding:120px 0}
 (function(){
   'use strict';
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Siempre arranca arriba: el navegador no recuerda dónde quedaste y se ignora un #seccion viejo en la dirección
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  scrollTo(0, 0); addEventListener('load', function(){ scrollTo(0, 0); });
   document.getElementById('anio').textContent = new Date().getFullYear();
   var boot = document.getElementById('boot');
   function listo(){ if(!boot || boot.classList.contains('fuera')) return; boot.classList.add('fuera'); document.body.classList.add('listo'); iniciar(); setTimeout(function(){ boot.remove(); }, 800); }
